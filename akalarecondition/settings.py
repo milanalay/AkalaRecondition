@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'akalarecondition.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd2o43ut9aj58ib',
+        'HOST': 'ec2-107-20-15-85.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'wrvqgvtvqbsaag',
+        'PASSWORD': '5b8f50a0d0899bcef81a1ce05c73fbc90a1b4dbbbdad5d54645420826105d124',
     }
 }
 
