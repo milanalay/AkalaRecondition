@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add Expenditure</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="invoice p-3 mb-3" style="min-height: 300px;">
+    <!-- form start -->
+    <form method="POST" >
+        {% csrf_token %}
+
+        <label>Name:</label>
+        {{ form.name }}
+        <label>Amount:</label>
+        {{ form.amount }}
+
+        <label>Date:</label>
+        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+            <div data-target="#reservationdate">{{ form.date }}</div>
+            {{ form.errors }}
+            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </form>
+    </div>
+  </div>
+</section>
+</div>
+
+{% endblock content %}
+
+{% block javascript %}
+
+<script>
+  $(function () {
+      $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+  })
+</script>
+
+{% endblock javascript %}

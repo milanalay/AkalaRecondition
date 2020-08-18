@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Products</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Products</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+        {% for product in products %}
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <label>{{ product.name }} ( {{ product.bike_number }} )</label>
+                <p>Model: {{ product.model }}<br/>Sale Price: Rs. {{ product.sale_price }}</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-motorcycle" aria-hidden="true"></i>
+              </div>
+              <a href="{% url 'product_detail' product.slug %}" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+</div>
+{% endblock content %}
+
+{% block javascript %}
+
+
+
+{% endblock javascript %}

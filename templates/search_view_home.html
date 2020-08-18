@@ -1,0 +1,36 @@
+{% extends 'base_home.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% include 'messages.html' %}
+{{ message }}
+<!-- Main content -->
+    <div class="container-fluid">
+        <div class="row">
+        {% if sr %}
+        {% for product in sr %}
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <label>{{ product.name }} ( {{ product.bike_number }} )</label>
+                <p>Model: {{ product.model }}<br/>Sale Price: Rs. {{ product.sale_price }}</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-motorcycle" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+  
+
+{% endblock content %}
+
+{% block javascript %}
+
+{% endblock javascript %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Products</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item">Product</li>
+              <li class="breadcrumb-item active">Product Details</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+        <!-- Main content -->
+        <div class="invoice p-3 mb-3" style="min-height: 500px;">
+                <!-- title row -->
+                <div class="row" style="text-align: center;">
+                <div class="col-12">
+                  {{ object.date }}
+                  <h2>
+                    {{ object.name }}
+                  </h2>
+                  <br/>
+                  <label>Model : {{ object.model }}</label>
+                  <br/>
+                  <label>Bike Number : {{ object.bike_number }}</label>
+                  <br/>
+                  <label>Price : Rs. {{ object.price }}</label>
+                  <br/>
+                  <label>Sale Price : Rs. {{ object.sale_price }}</label>
+                  <br/>
+                  <label>Owner : {{ object.owner }}</label>
+                  <br/>
+                  <label>Contact : {{ object.contact }}</label>
+                  <br/>
+                  <label>Status : {{ object.stock }}</label>
+                  <br/>
+                  <label>Sanakhat : {{ object.sanakhat }}</label>
+                  <br/>
+                  <label>Passed : {{ object.passed }}</label>
+                  <br/>
+                  {% if object.outgoing_product %}
+                  <label>Sold Price : Rs. {{ object.outgoing_product.price }}</label>
+                  <br/>
+                  <label>Sold To : {{ object.outgoing_product.customer }}</label>
+                  <br/>
+                  <label>Contact : {{ object.outgoing_product.contact }}</label>
+                  <br/>
+                  <label>Sold Date : {{ object.outgoing_product.date }}</label>
+                  <br/>
+                  {% endif %}
+                  <br/>
+                  <a href="{% url 'update' object.slug %}"><button type="submit">Update</button></a>
+                </div>
+                </div>
+
+
+
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+
+
+</div>
+{% endblock content %}
+
+{% block javascript %}
+
+
+
+{% endblock javascript %}

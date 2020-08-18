@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row" id="myRow">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ available_product }}</h3>
+
+                <p>Products Available</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-motorcycle" aria-hidden="true"></i>
+              </div>
+              <a href="#products-available" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ profit_percent }}%</h3>
+
+                <p>Profit</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-money" aria-hidden="true"></i>
+              </div>
+              <a href="#profit" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ expenditure_avg }}+</h3>
+
+                <p>Expenditure</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-money"></i>
+              </div>
+              <a href="#expenditure" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ sold_product }}</h3>
+
+                <p>Products Sold</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-motorcycle" aria-hidden="true"></i>
+              </div>
+              <a href="#products-sold" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+      </div>
+    </section>
+
+    <h3 id="products-available" style="margin-left: 15px;"> Products Available </h3>
+    <div class="card" style="margin-left: 15px; margin-right: 15px;">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="table_id1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Model</th>
+                    <th>Bike Number</th>
+                    <th>Price</th>
+                    <th>Sale Price</th>
+                    <th>Sanakhat</th>
+                    <th>Passed</th>
+                    <th>Date</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for objects in object %}
+                  
+                  <tr>
+                    <td>{{ objects.name }}</td>
+                    <td>{{ objects.model }}</td>
+                    <td>{{ objects.bike_number }}</td>
+                    <td>Rs. {{ objects.price }}</td>
+                    <td>Rs. {{ objects.sale_price }}</td>
+                    <td>{{ objects.sanakhat }}</td>
+                    <td>{{ objects.passed }}</td>
+                    <td>{{ objects.date }}</td>
+
+                  </tr>
+                  
+                  {% endfor %}
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+    <h3 id="profit" style="margin-left: 15px;"> Profits </h3>
+    <div class="card" style="margin-left: 15px; margin-right: 15px;">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="table_id2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Sold Product</th>
+                    <th>Model</th>
+                    <th>Bike Number</th>
+                    <th id="profit">Profit</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for objects in data %}
+                  
+                  <tr>
+                    <td>{{ objects.product.name }}</td>
+                    <td>{{ objects.product.model }}</td>
+                    <td>{{ objects.product.bike_number }}</td>
+                    <td id="profit-list">Rs. {{ objects.calc_profit }}</td>
+
+                  </tr>
+                  
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th colspan="3">Total:</th>
+                    <th class="total">Rs. {{ profit }} </th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+    <h3 id="expenditure" style="margin-left: 15px;"> Expenditures </h3>
+    <div class="card" style="margin-left: 15px; margin-right: 15px;">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="table_id3" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for objects in expenditure %}
+                  
+                  <tr>
+                    <td>{{ objects.name }}</td>
+                    <td>{{ objects.date }}</td>
+                    <td>Rs. {{ objects.amount }}</td>
+
+                  </tr>
+                  
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th colspan="2">Total:</th>
+                    <th>Rs. {{ total_expenditure }}</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+    <h3 id="products-sold" style="margin-left: 15px;"> Products Sold </h3>
+    <div class="card" style="margin-left: 15px; margin-right: 15px;">
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="table_id4" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Model</th>
+                    <th>Bike Number</th>
+                    <th>Price</th>
+                    <th>Sold Price</th>
+                    <th>Sanakhat</th>
+                    <th>Passed</th>
+                    <th>Date</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for objects in data %}
+                  
+                  <tr>
+                    <td>{{ objects.product.name }}</td>
+                    <td>{{ objects.product.model }}</td>
+                    <td>{{ objects.product.bike_number }}</td>
+                    <td>Rs. {{ objects.product.price }}</td>
+                    <td>Rs. {{ objects.price }}</td>
+                    <td>{{ objects.product.sanakhat }}</td>
+                    <td>{{ objects.product.passed }}</td>
+                    <td>{{ objects.date }}</td>
+
+                  </tr>
+                  
+                  {% endfor %}
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+         
+</div>
+
+
+{% endblock content %}
+
+{% block javascript %}
+
+<!-- DataTables -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+
+<script>
+  $(function () {
+    $('#table_id1').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+  $(function () {
+    $('#table_id2').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+  $(function () {
+    $('#table_id3').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+  $(function () {
+    $('#table_id4').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  });
+  
+</script>
+
+<script>
+$(document).ready(function(){
+  // Add scrollspy to <body>
+  $('body').scrollspy({target: ".content", offset: 50});   
+
+  // Add smooth scrolling on all links inside the navbar
+  $("#myRow a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    }  // End if
+  });
+});
+</script>
+});
+
+
+
+
+{% endblock javascript %}
