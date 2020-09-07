@@ -25,19 +25,11 @@
     <form method="POST" >
         {% csrf_token %}
 
-        <label>Name:</label>
-        {{ form.name }}
-        <label>Amount:</label>
-        {{ form.amount }}
+        <label style="width: 550px;">Name: {{ form.name }}</label>
 
-        <label>Date:</label>
-        <div class="input-group date" id="reservationdate" data-target-input="nearest">
-            <div data-target="#reservationdate">{{ form.date }}</div>
-            {{ form.errors }}
-            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
-        </div>
+        <label style="width: 550px; margin-left: 5px;">Amount: {{ form.amount }}</label>
+        <br>
+        <label style="width: 220px;">Date: {{ form.date }}</label>
 
     <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -21,7 +21,7 @@ class ExpenditureAdmin(admin.ModelAdmin):
 
 @admin.register(Incoming)
 class IncomingAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug', 'model', 'price', 'owner', 'contact', 'date', 'stock']
+    list_display = ['name', 'slug', 'image', 'model', 'price', 'owner', 'contact', 'date', 'stock']
 
 
 

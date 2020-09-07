@@ -22,32 +22,25 @@
   <div class="container-fluid">
     <div class="invoice p-3 mb-3" style="min-height: 500px;">
     <!-- form start -->
-    <form method="POST" >
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <label>Name:</label>
-        {{ form.name }}
-        <label>Model:</label>
-        {{ form.model }}
-        <label>Number</label>
-        {{ form.bike_number }}
-        <label>Buy Price:</label>
-        {{ form.price }}
-        <label>Sale Price:</label>
-        {{ form.sale_price }}
-        <label>Owner:</label>
-        {{ form.owner }}
-        <label>Contact:</label>
-        {{ form.contact }}
+        <label style="width: 440px;">Name: {{ form.name }}</label>
+        
+        <label style="width: 211px; margin-left: 5px;">Model: {{ form.model }}</label>
+        <label style="width: 440px; margin-left: 5px;">Bike Number: {{ form.bike_number }}</label>
+        <br/>
+        <label style="width: 555px;">Image: {{ form.image }}</label>
+        <br/>
+        <label style="width: 550px;">Buy Price: {{ form.price }}</label>
 
-            <label>Date:</label>
-            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                <div data-target="#reservationdate">{{ form.date }}</div>
-                {{ form.errors }}
-                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                </div>
-            </div>
+        <label style="width: 550px; margin-left: 5px;">Sale Price: {{ form.sale_price }}</label>
+        <br/>
+        <label style="width: 550px;">Owner: {{ form.owner }}</label>
+        
+        <label style="width: 550px; margin-left: 5px;">Contact: {{ form.contact }}</label>
+        <br/>
+        <label style="width: 220px;">Date: {{ form.date }}</label>
 
     <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>

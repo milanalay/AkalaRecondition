@@ -77,11 +77,12 @@ def view_product(request):
 @user_passes_test(lambda u: u.is_superuser)
 def add_incoming(request, *args, **kwargs):
     if request.method == 'POST':
-        form = IncomingForm(request.POST)
+        form = IncomingForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-
-            return redirect('dashboard')
+            data = form.save(commit=False)
+            data.image = form.cleaned_data['image']
+            data.save()
+            return redirect('product')
     else:
         form = IncomingForm()
     return render(request, 'add_new_form.html', {'form': form})
@@ -177,7 +178,7 @@ def search_home(request):
         srch = request.POST['srh']
 
         if srch:
-            match = Incoming.objects.filter(
+            match = Incoming.objects.filter(stock='Available').filter(
                 Q(name__icontains=srch) | Q(model__icontains=srch) | Q(bike_number__icontains=srch) | Q(price__icontains=srch) | Q(owner__icontains=srch))
 
             if match:

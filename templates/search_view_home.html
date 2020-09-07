@@ -11,18 +11,31 @@
         <div class="row">
         {% if sr %}
         {% for product in sr %}
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <label>{{ product.name }} ( {{ product.bike_number }} )</label>
-                <p>Model: {{ product.model }}<br/>Sale Price: Rs. {{ product.sale_price }}</p>
+          <div class="col-md-6">
+            <!-- Box Comment -->
+            <div class="card card-widget">
+              <div class="card-header">
+                <div class="user-block">
+                  <label><a href="{% url 'product_detail' product.slug %}" class="text-info">{{ product.name }}</a> ( {{ product.model }} )</label>
+                  <label class="description" style="margin-left: 10px;">Bike Number: {{ product.bike_number }} <br/> Sale Price: Rs. {{ product.sale_price }}</label>
+                  <p class="description" style="margin-left: 10px;">Posted On:  {{ product.date }}</p>
+                </div>
+                <!-- /.user-block -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                {% if product.image %}
+                <img class="img-fluid pad" src="{{ product.image.url }}" alt="Photo">
+                {% endif %}
+                </div>
               </div>
-              <div class="icon">
-                <i class="fas fa-motorcycle" aria-hidden="true"></i>
-              </div>
-            </div>
           </div>
+          <!-- /.col -->
         {% endfor %}
         {% endif %}
         </div>

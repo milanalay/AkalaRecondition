@@ -2,6 +2,19 @@
 {% load static %}
 
 
+{% block css %}
+
+<style> 
+  .gallery-wrap .img-big-wrap img {
+    height: 100%;
+    width: 94%;
+    margin-left: 3%;
+    margin-top: 18px;
+    display: inline-block;
+    cursor: zoom-in;
+}
+</style>
+{% endblock css %}
 
 {% block content %}
 
@@ -16,8 +29,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item">Product</li>
+              <li class="breadcrumb-item"><a href="{% url 'dashboard' %}" class="text-info">Home</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'product' %}" class="text-info">Product</a></li>
               <li class="breadcrumb-item active">Product Details</li>
             </ol>
           </div>
@@ -25,15 +38,15 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <section class="content">
+    {% comment %} <section class="content">
         <div class="container-fluid">
         <!-- Main content -->
-        <div class="invoice p-3 mb-3" style="min-height: 500px;">
+        <div class="invoice p-3 mb-3" style="min-height: 500px; width: 600px; float:right;">
                 <!-- title row -->
                 <div class="row" style="text-align: center;">
                 <div class="col-12">
                   {{ object.date }}
-                  <h2>
+                  <h2 class="text-info">
                     {{ object.name }}
                   </h2>
                   <br/>
@@ -72,10 +85,100 @@
 
 
 
-        </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        </div> {% endcomment %}
+
+
+<section class="content">
+  <div class="container-fluid">
+  <div class="card">
+	<div class="row">
+        <article class="gallery-wrap"> 
+        <div class="img-big-wrap">
+          <div> <a href="#"><img src="{% static 'images/duke.jpg' %}"></a></div>
+        </div> <!-- slider-product.// -->
+        </article> <!-- gallery-wrap .end// -->
+
+<article class="card-body p-5">
+    {{ object.date }}
+    <h3 class="title mb-3">{{ object.name }}</h3>
+
+<p class="price-detail-wrap"> 
+	<span class="price h3 text-warning"> 
+		<span class="currency">NRS. </span><span class="num">{{ object.price }}</span>
+	</span> 
+</p> <!-- price-detail-wrap .// -->
+<dl class="param param-feature">
+  <dt>Model</dt>
+  <dd>{{ object.model }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Bike Number</dt>
+  <dd>{{ object.bike_number }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Owner</dt>
+  <dd>{{ object.owner }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Contact</dt>
+  <dd>{{ object.contact }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Status</dt>
+  <dd>{{ object.stock }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Sanakhat</dt>
+  <dd>{{ object.sanakhat }}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Passed</dt>
+  <dd>{{ object.passed }}</dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<a href="{% url 'update' object.slug %}"><button type="submit" class="btn btn-lg btn-info text-uppercase">Update</button></a>
+	
+
+</article> <!-- card-body.// -->
+
+{% if object.outgoing_product %}
+<aside class="col-sm-7" style="margin-left: 50px; margin-top: 50px;">
+<article class="card-body p-5">
+  <dl class="param param-feature">
+  <dt>Sold Price</dt>
+  <dd>
+    <p class="price-detail-wrap"> 
+    <span class="price h3 text-warning"> 
+    <span class="currency">NRS. </span><span class="num">{{ object.outgoing_product.price }}</span>
+    </span> 
+    </p>
+  </dd>
+  </dl>  <!-- item-property-hor .// -->
+  <dl class="param param-feature">
+  <dt>Customer</dt>
+  <dd>{{ object.outgoing_product.customer }}</dd>
+  </dl>  <!-- item-property-hor .// -->
+  <dl class="param param-feature">
+  <dt>Contact</dt>
+  <dd>{{ object.outgoing_product.contact }}</dd>
+  </dl>  <!-- item-property-hor .// -->
+  <dl class="param param-feature">
+  <dt>Sold Date</dt>
+  <dd>{{ object.outgoing_product.date }}</dd>
+  </dl>  <!-- item-property-hor .// -->
+  
+
+</article>
+</aside>
+{% endif %}
+
+</div> <!-- row.// -->
+</div> <!-- card.// --> 
+</div>
+</section>
+
+       
 
 
 

@@ -19,36 +19,38 @@
 
 <!-- Main content -->
 <section class="content">
+  <div class="container-fluid">
+    <div class="invoice p-3 mb-3" style="min-height: 500px;">
     <!-- form start -->
     <form method="POST">
         {% csrf_token %}
 
-        <label>Name:</label>
-        {{ form.name }}
-        <label>Model:</label>
-        {{ form.model }}
-        <label>Number</label>
-        {{ form.bike_number }}
-        <label>Buy Price:</label>
-        {{ form.price }}
-        <label>Expense:</label>
-        {{ form.expense }}
-        <label>Sale Price:</label>
-        {{ form.sale_price }}
-        <label>Owner:</label>
-        {{ form.owner }}
-        <label>Contact:</label>
-        {{ form.contact }}
-        <label>Sanakhat:</label>
-        {{ form.sanakhat }}
-        <label>Passed:</label>
-        {{ form.passed }}
+        <label style="width: 440px;">Name: {{ form.name }}</label>
+        
+        <label style="width: 211px; margin-left: 5px;">Model: {{ form.model }}</label>
+        <label style="width: 440px; margin-left: 5px;">Bike Number: {{ form.bike_number }}</label>
+        <br/>
+        
+        <label style="width: 550px;">Buy Price: {{ form.price }}</label>
+
+        <label style="width: 550px; margin-left: 5px;">Sale Price: {{ form.sale_price }}</label>
+        <br/>
+        <label style="width: 550px;">Owner: {{ form.owner }}</label>
+        
+        <label style="width: 550px; margin-left: 5px;">Contact: {{ form.contact }}</label>
+        <br/>
+        <label>Sanakhat: {{ form.sanakhat }}</label>
+        
+        <label style="margin-left: 480px;">Passed: {{ form.passed }}</label>
+        
 
 
     <div class="card-footer">
         <button type="submit" class="btn btn-primary">Update</button>
     </div>
     </form>
+  </div>
+  </div>
 </section>
 </div>
 
