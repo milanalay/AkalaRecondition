@@ -36,6 +36,10 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
     #button {
       display: inline-block;
       background-color: #FF9800;
@@ -292,6 +296,7 @@ $(window).scroll(function() {
     $('html, body').animate({scrollTop:0}, '300');
   });
 </script>
+
 
 {% block javascript %}
 

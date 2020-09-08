@@ -80,7 +80,17 @@ def add_incoming(request, *args, **kwargs):
         form = IncomingForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.save(commit=False)
-            data.image = form.cleaned_data['image']
+            data = Incoming(
+                name = form.cleaned_data['name'],
+                image = form.cleaned_data['image'],
+                model = form.cleaned_data['model'],
+                bike_number = form.cleaned_data['bike_number'],
+                price = form.cleaned_data['price'],
+                sale_price = form.cleaned_data['sale_price'],
+                owner = form.cleaned_data['owner'],
+                contact = form.cleaned_data['contact'],
+                date = form.cleaned_data['date']
+            )
             data.save()
             return redirect('product')
     else:
