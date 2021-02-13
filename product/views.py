@@ -16,7 +16,7 @@ from django.db.models import Sum, Avg
 
 def home(request):
     products = Incoming.objects.filter(stock='Available')
-    return render(request, 'home.html', {'products': products})
+    return render(request, 'index.html', {'products': products})
 
 
 def login(request):
