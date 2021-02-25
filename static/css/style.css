@@ -884,7 +884,7 @@ a.create:hover, .account-top input[type="submit"]:hover, .register-but form inpu
 }
 .checkbox input + i:after {
 	content: '';
-	background: url("../images/tick1.png") no-repeat 1px 2px;
+	background: no-repeat 1px 2px;
 	top: -1px;
 	left: -1px;
 	width: 15px;
