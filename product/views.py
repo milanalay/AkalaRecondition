@@ -7,6 +7,7 @@ from product.forms import IncomingForm, IncomingUpdateForm, OutgoingForm, Expend
 
 from product.models.datamodel import Incoming, Outgoing
 from product.models.expendituremodel import Expenditure
+from product.models.contactmodel import Contact, Newsletter
 
 # Create your views here.
 from django.contrib.auth.decorators import user_passes_test, login_required
@@ -16,7 +17,33 @@ from django.db.models import Sum, Avg
 
 def home(request):
     products = Incoming.objects.filter(stock='Available')
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        print(email)
+        try:
+            data = Newsletter.objects.create(email=email)
+            print(data)
+            data.save()
+            return redirect('/')
+        except Exception as e:
+            print(e)
+            
     return render(request, 'index.html', {'products': products})
+
+def contact_page(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        try:
+            data = Contact.objects.create(name=name, email=email, subject=subject, message=message)
+            data.save()
+            return redirect('/')
+        except Exception as e:
+            print(e)
+    return render(request, 'contact.html', {})
 
 
 def login(request):

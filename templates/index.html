@@ -29,6 +29,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    	  <div class="container">
    	  	<div class="header_top">
            <div class="header_top_right">
+		   		<ul class="header_user_info">
+					<a class="login" href="">
+						<i class="user"> </i> 
+						<li class="user_desc">My Account</li>
+					</a>
+					<div class="clearfix"> </div>
+				</ul>
 		    <!-- start search-->
 				<div class="search-box">
 				   <div id="sb-search" class="sb-search">
@@ -52,13 +59,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  </div>
 	  <div class="header_bottom">
 	   <div class="logo">
-		  <h1><a href="{% url 'home' %}"><span class="m_1">TWO</span>WHEELERS</a></h1>
+		  <h1><a href="{% url 'home' %}"><span class="m_1">AKALA</span>RECONDITION</a></h1>
 	   </div>
    	   <div class="menu">
 	     <ul class="megamenu skyblue">
-				<li><a class="color10" href="#">BRANDS</a></li>
-				<li><a class="color10" href="#">BIKES</a></li>
-				<li><a class="color10" href="#">SCOOTERS</a></li>
+				<li><a class="color10" href="#home">BIKES</a></li>
+				<li><a class="color10" href="#home">SCOOTERS</a></li>
+				<li><a class="color10" href="{% url 'contact' %}">CONTACT</a></li>
 				
 				<div class="clearfix"> </div>
 			</ul>
@@ -67,164 +74,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        </div>
 	    </div>
    </div>
+
    <div class="main">
     <div class="middle_content">
     	<div class="container">
-    		<h2>Welcome</h2>
-    		<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+    		<h2>About Us</h2>
+    		<p>Akala Recondition is one of the best places in Pokhara providing a wide range of Motercycles and Scooters that are very popular in the country and are well recognized for its quality services. Our aim is to reach out to customers and deliver the space for buying, selling or exchanging used two-wheelers inside Pokhara valley.</p>
     	</div>
     </div>
    	<div class="content_middle_bottom">
-   		<div class="header-left" id="home">
+	   	<div class="middle_content" id="home">
+	   	<div class="container">
+    		<h1>Our Products</h1>
+		</div>
+		</div>
+   		<div class="header-left">
 		      <section>
 				<ul class="lb-album" >
+				{% for product in products %}
 					<li>
-						<a href="#image-1">
-							<img src="images/g1.jpg"  class="img-responsive" alt="image01"/>
-							<span>Pointe</span>
+						<a href="#{{ product.bike_number }}">
+							{% if product.image %}
+							<img src="{{ product.image.url }}"  class="img-responsive" alt="image01"/>
+							{% endif %}
+							<span>{{ product.name }}</span>
 						</a>
-						<div class="lb-overlay" id="image-1">
+						<div class="lb-overlay" id="{{ product.bike_number }}">
 							<a href="#page" class="lb-close">x Close</a>
-							<img src="images/g1.jpg"  class="img-responsive" alt="image01"/>
+							{% if product.image %}
+							<img src="{{ product.image.url }}"  class="img-responsive" alt="image01"/>
+							{% endif %}
 							<div>
-								<h3>pointe <span>/point/</span></h3>
-								<p>Dance performed on the tips of the toes</p>
+								<h3>{{ product.name }}</h3>{{ product.bike_number}} ({{ product.model }} Model)
+								<p>Fresh and in good condition. <br/><span>Rs. {{ product.sale_price }}</span></p>
 							</div>
 						</div>
 					</li>
-					<li>P-=
-
-
-						<a href="#image-2">
-							<img src="images/g2.jpg"  class="img-responsive" alt="image02"/>
-							<span>Port de bras</span>
-						</a>
-						<div class="lb-overlay" id="image-2">
-							<img src="images/g2.jpg"  class="img-responsive" alt="image02"/>
-							<div>							
-								<h3>port de bras <span>/ˌpôr də ˈbrä/</span></h3>
-								<p>An exercise designed to develop graceful movement and disposition of the arms</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-3">
-							<img src="images/g3.jpg"  class="img-responsive" alt="image03"/>
-							<span>Plié</span>
-						</a>
-						<div class="lb-overlay" id="image-3">
-							<img src="images/g3.jpg"  class="img-responsive" alt="image03"/>
-							<div>							
-								<h3>pli·é <span>/plēˈā/</span></h3>
-								<p>A movement in which a dancer bends the knees and straightens them again</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-4">
-							<img src="images/g4.jpg"  class="img-responsive" alt="image04"/>
-							<span>Adagio</span>
-						</a>
-						<div class="lb-overlay" id="image-4">
-							<img src="images/g4.jpg"  class="img-responsive" alt="image04"/>
-							<div>							
-								<h3>a·da·gio <span>/əˈdäjō/</span></h3>
-								<p>A movement or composition marked to be played adagio</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-5">
-							<img src="images/g5.jpg"  class="img-responsive" alt="image05"/>
-							<span>Frappé</span>
-						</a>
-						<div class="lb-overlay" id="image-5">
-							<img src="images/g5.jpg"  class="img-responsive" alt="image05"/>
-							<div>							
-								<h3>frap·pé<span>/fraˈpā/</span></h3>
-								<p>Involving a beating action of the toe of one foot against the ankle of the supporting leg</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-6">
-							<img src="images/g6.jpg"  class="img-responsive" alt="image06"/>
-							<span>Glissade</span>
-						</a>
-						<div class="lb-overlay" id="image-6">
-							<img src="images/g6.jpg"  class="img-responsive" alt="image06"/>
-							<div>							
-								<h3>glis·sade <span>/gliˈsäd/</span></h3>
-								<p>One leg is brushed outward from the body, which then takes the weight while the second leg is brushed in to meet it</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-7">
-							<img src="images/g7.jpg"  class="img-responsive" alt="image07"/>
-							<span>Jeté</span>
-						</a>
-						<div class="lb-overlay" id="image-7">
-							<img src="images/g7.jpg"  class="img-responsive" alt="image07"/>
-							<div>							
-								<h3>je·té <span>/zhə-ˈtā/</span></h3>
-								<p>A springing jump made from one foot to the other in any direction</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
-					<li>
-						<a href="#image-8">
-							<img src="images/g8.jpg"  class="img-responsive" alt="image08"/>
-							<span>Piqué</span>
-						</a>
-						<div class="lb-overlay" id="image-8">
-							<img src="images/g8.jpg"  class="img-responsive" alt="image08"/>
-							<div>							
-								<h3>pi·qué <span>/pēˈkā/</span></h3>
-								<p>Strongly pointed toe of the lifted and extended leg sharply lowers to hit the floor then immediately rebounds upward</p>
-							</div>
-							<a href="#page" class="lb-close">x Close</a>
-						</div>
-					</li>
+					{% endfor %}
+					
 					<div class="clearfix"></div>
 				</ul>
 			</section>
 		</div>
 	  </div>
    </div>
+
    <div class="footer">
    	 <div class="container">
    	 	<div class="newsletter">
 			<h3>Newsletter</h3>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-			<form>
-			  <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+			<p>Subscribe to our newsletter for latest updates.</p>
+			<form method="POST">
+            	{% csrf_token %}
+			  <input type="text" name="email" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}" required> 
 			  <input type="submit" value="SUBSCRIBE">
 			</form>
 		</div>
    		<div class="cssmenu">
 		   <ul>
-			<li class="active"><a href="#">Privacy</a></li>
+			<li><a href="#">Privacy</a></li>
 			<li><a href="#">Terms</a></li>
 			<li><a href="#">Shop</a></li>
 			<li><a href="#">About</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>
 		  </ul>
 		</div>
 		<ul class="social">
 			<li><a href=""> <i class="instagram"> </i> </a></li>
-			<li><a href=""><i class="fb"> </i> </a></li>
+			<li><a href="https://www.facebook.com/akalareconditionandservicecenter"><i class="fb"> </i> </a></li>
 			<li><a href=""><i class="tw"> </i> </a></li>
 	    </ul>
 	    <div class="clearfix"></div>
 	    <div class="copy">
-           <p> &copy; 2021 AkalaRecondition. All Rights Reserved | Developed by Milan Ale</p>
+           <p> &copy; 2021 AkalaRecondition. All Rights Reserved | Developed by <a href="https://milanale.herokuapp.com/" target="_blank">Milan</a></p>
 	    </div>
    	</div>
    </div>

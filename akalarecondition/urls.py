@@ -18,7 +18,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView
-from product.views import home, view_dashboard, view_product, add_incoming, sale_outgoing, ProductDetailView, update_view, add_expenditure, search_product, search_home
+from product.views import *
 
 
 
@@ -36,6 +36,7 @@ urlpatterns = [
     path('addexpenditure/', add_expenditure, name='expenditure'),
     path('dashboard/search/', search_product, name='query_search'),
     path('search/', search_home, name='home_search'),
+    path('contact/', contact_page, name='contact'),
 ]
 
 if settings.DEBUG:

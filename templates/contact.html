@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="men">
+   	<div class="container">
+   	    <div class="grid_1">
+	   	    <h1>Contact Info</h1>
+	   	    <p>Akala Recondition has been able to satisfy its customers for many years. If you have any questions about our products or desire to book our services, please call one of the numbers below or email Akala Recondition using the contact form below.</p>
+        </div>
+    <div class="grid_4">
+        <div class="grid_2 preffix_1">
+	        <ul class="iphone">
+            <i class="phone"> </i>
+            <li class="phone_desc">Phone : +977 9826127972 , +977 9804100083 </li>
+	        <div class="clearfix"> </div>
+	        </ul>
+	        <ul class="iphone">
+	      	<i class="flag"> </i>
+	        <li class="phone_desc">Website : <a href="https://akalarecondition.herokuapp.com">akalarecondition.herokuapp.com</a></li>
+	      	<div class="clearfix"> </div>
+	        </ul>
+	    </div>
+	    <div class="grid_3">
+	        <ul class="iphone">
+	        <i class="msg"> </i>
+	        <li class="phone_desc">Email : <a href="mailto:akalarecondition@gmail.com">akalarecondition@gmail.com</a> </li>
+	      	<div class="clearfix"> </div>
+	        </ul>
+	        <ul class="iphone">
+	      	<i class="home"> </i>
+	        <li class="phone_desc">Address : Ranipauwa, Pokhara, Nepal </li>
+	      	<div class="clearfix"> </div>
+	        </ul>
+	    </div>
+	<div class="clearfix"> </div>
+	</div>
+	<div class="contact_form">
+	    <h2>Feedback</h2>
+	    <form method="POST">
+        {% csrf_token %}
+			<div class="col-md-6 to">
+             	<input type="text" name="name" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required>
+			 	<input type="text" name="email" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required>
+			 	<input type="text" name="subject" class="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
+			</div>
+			<div class="col-md-6 text">
+               <input type="text" name="message" class="text" value="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}" required>
+            </div>
+            <div class="clearfix"></div>
+            <div class="but__center"><input type="submit" value="Send message &gt;&gt;"></div>
+        </form>
+    </div>
+    </div>
+</div>
+<div class="map">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d392.8456873681234!2d83.9956815427952!3d28.221160859753958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x399595d516c854ff%3A0x2cc62ff0bbc64823!2sAkala%20Recondition%20House%2C%20Pokhara%2033700!3m2!1d28.221172799999998!2d83.9959325!5e0!3m2!1sen!2snp!4v1614191616729!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+{% endblock content %}

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from product.models.expendituremodel import Expenditure
 from product.models.datamodel import Incoming, Outgoing
+from product.models.contactmodel import Contact, Newsletter
 
 # Register your models here.
 
@@ -29,3 +30,13 @@ class IncomingAdmin(admin.ModelAdmin):
 @admin.register(Outgoing)
 class OutgoingAdmin(admin.ModelAdmin):
     list_display = ['__str__', 'price', 'customer', 'contact', 'date',]
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'subject', 'message',]
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ['__str__',]
