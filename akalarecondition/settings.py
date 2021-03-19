@@ -20,19 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-import environ 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env()
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# False if not in os.environ
-DEBUG = env('DEBUG')
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
 ALLOWED_HOSTS = ['akalarecondition.herokuapp.com', '127.0.0.1']
 
@@ -93,7 +85,7 @@ DATABASES = {
         'HOST': 'ec2-107-20-15-85.compute-1.amazonaws.com',
         'PORT': 5432,
         'USER': 'wrvqgvtvqbsaag',
-        'PASSWORD': os.environ['PASSWORD'],
+        'PASSWORD': os.environ.get('PASSWORD'),
     }
 }
 
