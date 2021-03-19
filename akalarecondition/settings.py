@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5%(0k(&zx+x(2g2f7po#b*1!+&u%cqw$&er1yj#t^filzutv%6'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,7 +85,7 @@ DATABASES = {
         'HOST': 'ec2-107-20-15-85.compute-1.amazonaws.com',
         'PORT': 5432,
         'USER': 'wrvqgvtvqbsaag',
-        'PASSWORD': '5b8f50a0d0899bcef81a1ce05c73fbc90a1b4dbbbdad5d54645420826105d124',
+        'PASSWORD': os.environ['PASSWORD'],
     }
 }
 
